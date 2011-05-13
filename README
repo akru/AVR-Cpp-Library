@@ -1,0 +1,12 @@
+****************************************************
+***                                              ***
+***               AVR C++ Library                ***
+***                                              ***
+****************************************************
+
+Description:
+  This library provide high level classes for work with AVR-MCU.
+
+License:
+  All source code distributed under GNU GPLv3.
+
