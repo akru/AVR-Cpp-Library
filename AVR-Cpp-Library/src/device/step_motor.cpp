@@ -1,7 +1,7 @@
 #include <device/step_motor.h>
 
 StepMotor::StepMotor( Application *parentApp )
-    : ExternalDeviceAbstract( 4 ), crntPin( 0 ), mode( 0 )
+    : ExternalDeviceAbstract( 4 ), crntPin( 0 ), mode( MODE_SLEEP )
 {
   parent = parentApp;
   timer = parent->mcu->timer();

@@ -6,13 +6,8 @@
 #include <timer_abstract.h>
 #include <application.h>
 
-#define MODE_SLEEP   0
-#define MODE_READY   1
-#define MODE_IDLE    2
-#define MODE_SWITCH  3
-
-#define DIRECTION_LEFT   1
-#define DIRECTION_RIGHT  0
+const char DIRECTION_LEFT  = 1;
+const char DIRECTION_RIGHT = 0;
 
 class StepInfo
 {
@@ -42,6 +37,10 @@ private:
   char crntStep;
   char mode;
   int interruptCounter;
+  static const char MODE_SLEEP   = 0;
+  static const char MODE_READY   = 1;
+  static const char MODE_IDLE    = 2;
+  static const char MODE_SWITCH  = 3;
 };
 
 #endif // DRIVE_H
