@@ -10,6 +10,7 @@ MainApplication::MainApplication()
   right = new Button( this );
   sm = new StepMotor( this );
   sensor = new SensorAngle( this );
+  sp = new Speaker( this );
 
   /*  Initialisation  */
   red->setPin( 0, PB_6, PORT_B, WRITE );      // Red LED
@@ -25,10 +26,12 @@ MainApplication::MainApplication()
   sensor->setPin( 0, PC_1, PORT_C, WRITE );   // Sensor Angle
   sensor->setPin( 1, PC_2, PORT_C, READ );    //
   sensor->setPin( 2, PC_3, PORT_C, WRITE );   //
+  sp->setPin(0, PC_4, PORT_C, WRITE);         // Speaker
   /* Initialisation end  */
 
   //left.onClick(&savePosition);
   //right.onClick();
+  sp->run(20, 1000);
   sensor->savePosition();
 }
 
