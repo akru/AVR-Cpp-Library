@@ -12,6 +12,8 @@ set (step_motor_SRCS
     "src/device/step_motor.cpp")
 set (led_SRCS
     "src/device/led.cpp")
+set(speaker_RSCS
+    "src/device/speaker.cpp")
 set (utils_SRCS
     "src/utils.cpp")
     
@@ -20,4 +22,5 @@ add_library(sensor_angle ${sensor_angle_SRCS})
 add_library(button ${button_SRCS})
 add_library(step_motor ${step_motor_SRCS})
 add_library(led ${led_SRCS})
+add_library(speaker ${speaker_RSCS})
 add_library(utils ${utils_SRCS})

@@ -29,7 +29,8 @@ target_link_libraries(${PROJECT_NAME}
                                         led
                                         button
                                         sensor_angle
-                                        step_motor)
+                                        step_motor
+                                        speaker)
 
 add_custom_command(
     TARGET  ${PROJECT_NAME}
