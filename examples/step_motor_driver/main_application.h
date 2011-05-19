@@ -6,8 +6,6 @@
 #include <device/button.h>
 #include <device/step_motor.h>
 #include <device/sensor_angle.h>
-#include <device/speaker.h>
-#include <mcu_abstract.h>
 
 class MainApplication :
       public Application
@@ -22,7 +20,6 @@ private:
   Button *left, *right;
   StepMotor *sm;
   SensorAngle *sensor;
-  Speaker *sp;
 };
 
 #endif // MAIN_APPLICATION_H
