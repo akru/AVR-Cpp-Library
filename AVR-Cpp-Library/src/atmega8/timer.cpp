@@ -12,7 +12,7 @@ List<InterruptAbstract *> TO_0;
 Timer::Timer()
 {
   cli();
-  TCCR0 |= ( 1 << CS02 ) | ( 1 << CS00 );
+  TCCR0 |= ( 1 << CS00 );
   TIMSK |= ( 1 << TOIE0 );
   sei();
 }
