@@ -14,13 +14,7 @@ public:
     Speaker(Application *parent);
     void _interrupt();
     void run(unsigned int newFreq, unsigned int newDuration);
-    bool busy()
-    {
-        if (mode)
-            return 1;
-        else
-            return 0;
-    }
+    bool busy();
 
 private:
     TimerAbstract *timer;

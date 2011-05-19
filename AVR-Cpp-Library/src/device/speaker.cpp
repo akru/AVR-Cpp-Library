@@ -2,8 +2,9 @@
 
 Speaker::Speaker(Application *parent)
     : ExternalDeviceAbstract(1),
-    timer(parent->mcu->timer()), mode(MODE_SLEEP), fCounter(0), dCounter(0)
+    timer(parent->mcu->timer()), mode(MODE_SLEEP), state(0), fCounter(0), dCounter(0)
 {
+    this->parent = parent;
     timer->connect(this);
 }
 
@@ -15,6 +16,14 @@ void Speaker::run(unsigned int newFreq, unsigned int newDuration)
         duration = newDuration;
         mode = MODE_SWITCH;
     }
+}
+
+bool Speaker::busy()
+{
+  if ( mode )
+    return 1;
+  else
+    return 0;
 }
 
 void Speaker::_interrupt()
@@ -46,7 +55,12 @@ void Speaker::_interrupt()
             ++dCounter;
         }
         else
+        {
             mode = MODE_SLEEP;
+            dCounter = 0;
+            pinDown(0);
+            state = 1;
+        }
         break;
     }
 }
