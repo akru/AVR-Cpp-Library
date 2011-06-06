@@ -14,6 +14,8 @@ set (led_SRCS
     "src/device/led.cpp")
 set(speaker_RSCS
     "src/device/speaker.cpp")
+set(pid_controller_RSCS
+    "src/controller/pid.cpp")
 set (utils_SRCS
     "src/utils.cpp")
     
@@ -23,4 +25,5 @@ add_library(button ${button_SRCS})
 add_library(step_motor ${step_motor_SRCS})
 add_library(led ${led_SRCS})
 add_library(speaker ${speaker_RSCS})
+add_library(pid_controller ${pid_controller_RSCS})
 add_library(utils ${utils_SRCS})
