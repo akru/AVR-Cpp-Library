@@ -16,7 +16,7 @@ public:
   float getOutput( float error );
 private:
   float Kp, Ki, Kd;
-  int previousError, integral;
+  float previousError, integral;
 };
 
 #endif // PID_H
