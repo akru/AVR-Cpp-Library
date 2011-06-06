@@ -7,23 +7,23 @@
 #include <timer_abstract.h>
 
 class Speaker :
-        public ExternalDeviceAbstract,
-        public InterruptAbstract
+      public ExternalDeviceAbstract,
+      public InterruptAbstract
 {
 public:
-    Speaker(Application *parent);
-    void _interrupt();
-    void run(unsigned int newFreq, unsigned int newDuration);
-    bool busy();
+  Speaker( Application *parent );
+  void _interrupt();
+  void run( unsigned int newFreq, unsigned int newDuration );
+  bool busy();
 
 private:
-    TimerAbstract *timer;
-    char mode;
-    bool state;
-    unsigned int freq, duration, fCounter, dCounter;
-    static const char MODE_SLEEP   = 0;
-    static const char MODE_IDLE    = 1;
-    static const char MODE_SWITCH  = 2;
+  TimerAbstract *timer;
+  char mode;
+  bool state;
+  unsigned int freq, duration, fCounter, dCounter;
+  static const char MODE_SLEEP   = 0;
+  static const char MODE_IDLE    = 1;
+  static const char MODE_SWITCH  = 2;
 };
 
 #endif // SPEAKER_H
