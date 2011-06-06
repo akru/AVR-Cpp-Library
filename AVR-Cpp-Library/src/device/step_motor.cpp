@@ -34,7 +34,7 @@ void StepMotor::_interrupt()
     {
       pinUp( crntPin );
     }
-    if ( interruptCounter == stepInfo.speed )
+    if ( interruptCounter == stepInfo.speed * 1024 )
     {
       pinDown( crntPin );
       mode = MODE_SWITCH;
