@@ -6,7 +6,7 @@
 class ExternalInterruptAbstract
 {
 public:
-  virtual void connect(CallbackAbstract *callback, char INTn) = 0;
+  virtual void connect( CallbackAbstract *callback, char INTn ) = 0;
 };
 
 #endif // EXTERNAL_INTERRUPT_ABSTRACT_H

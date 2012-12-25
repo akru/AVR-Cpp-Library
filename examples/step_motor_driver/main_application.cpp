@@ -15,9 +15,7 @@ MainApplication::MainApplication(McuAbstract *mcu)
   red->setPin( 0, PB_6, PORT_B, WRITE );      // Red LED
   green->setPin( 0, PB_7, PORT_B, WRITE );    // Green LED
   left->setPin( 0, PD_2, PORT_D, READ );      // Left Button
-  left->setINT( 0 );                          //
   right->setPin( 0, PD_3, PORT_D, READ );     // Right Button
-  right->setINT( 1 );                         //
   sm->setPin( 0, PB_0, PORT_B, WRITE );       // Step Drive
   sm->setPin( 1, PD_7, PORT_D, WRITE );       //
   sm->setPin( 2, PD_6, PORT_D, WRITE );       //

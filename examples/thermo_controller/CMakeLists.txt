@@ -8,6 +8,7 @@ target_link_libraries(tc
                                         atmega8
                                         utils
                                         button
+                                        seven_segment
                                         led)
 
 add_custom_command(

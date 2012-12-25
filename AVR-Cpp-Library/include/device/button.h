@@ -12,9 +12,12 @@ class Button :
 public:
   Button( Application *parentApp );
   void click( CallbackAbstract *callback );
-  void setINT( char INTn );
+  void setINT( char INTnum )
+  {
+    INTn = INTnum;
+  }
 private:
-  CallbackAbstract *cback;
+  char INTn;
 };
 
 #endif // BUTTON_H
