@@ -4,7 +4,7 @@ SensorAngle::SensorAngle( Application *parentApp )
     : ExternalDeviceAbstract( 3 ), mode( 0 )
 {
   parent = parentApp;
-  adc = parent->mcu->adc();
+  adc = parent->mcu()->adc();
   pinUp( 0 );
 }
 

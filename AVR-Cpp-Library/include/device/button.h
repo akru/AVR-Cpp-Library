@@ -3,22 +3,18 @@
 
 #include <external_device_abstract.h>
 #include <external_interrupt_abstract.h>
-#include <interrupt_abstract.h>
 #include <application.h>
+#include <callback.h>
 
 class Button :
-      public ExternalDeviceAbstract,
-      public InterruptAbstract
+      public ExternalDeviceAbstract
 {
 public:
   Button( Application *parentApp );
-  void onClick( void ( *cback )() );
-  void setINT( char numInt );
-  void _interrupt();
-
+  void click( CallbackAbstract *callback );
+  void setINT( char INTn );
 private:
-  ExternalInterruptAbstract *externalInterrupt;
-  void ( *callback )();
+  CallbackAbstract *cback;
 };
 
 #endif // BUTTON_H

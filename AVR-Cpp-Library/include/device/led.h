@@ -11,6 +11,7 @@ public:
   Led( Application *parentApp );
   void on();
   void off();
+  bool status();
 };
 
 #endif // LED_H

@@ -2,13 +2,12 @@
 #define SPEAKER_H
 
 #include <external_device_abstract.h>
-#include <interrupt_abstract.h>
 #include <application.h>
 #include <timer_abstract.h>
+#include <callback.h>
 
 class Speaker :
-      public ExternalDeviceAbstract,
-      public InterruptAbstract
+      public ExternalDeviceAbstract
 {
 public:
   Speaker( Application *parent );
@@ -24,6 +23,7 @@ private:
   static const char MODE_SLEEP   = 0;
   static const char MODE_IDLE    = 1;
   static const char MODE_SWITCH  = 2;
+  Callback<Speaker> *c;
 };
 
 #endif // SPEAKER_H

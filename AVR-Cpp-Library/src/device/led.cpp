@@ -15,3 +15,8 @@ void Led::off()
 {
   pinDown( 0 );
 }
+
+bool Led::status()
+{
+    return pinState( 0 );
+}

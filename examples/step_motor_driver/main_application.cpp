@@ -1,9 +1,9 @@
 #include "main_application.h"
-#include <atmega8/atmega8.h>
+#include <atmega8/io_def.h>
 
-MainApplication::MainApplication()
+MainApplication::MainApplication(McuAbstract *mcu)
+  : Application(mcu)
 {
-  mcu = new AtMega8();
   red = new Led( this );
   green = new Led( this );
   left = new Button( this );

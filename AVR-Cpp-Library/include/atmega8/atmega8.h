@@ -29,6 +29,7 @@ public:
     return &_externalInterrupt;
   }
   void digitalWrite( Pin pin, bool state );
+  bool digitalRead( Pin pin );
   void pinMode( Pin pin, bool mode );
 
 private:

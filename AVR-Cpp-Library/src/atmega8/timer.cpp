@@ -1,12 +1,11 @@
 #include <atmega8/timer.h>
-#include <list.h>
 #include <avr/io.h>
-#include <avr/iom8.h>
 #include <avr/interrupt.h>
+#include <signal.h>
 
 namespace TimerInterrupt
 {
-List<InterruptAbstract *> TO_0;
+signal TO_0;
 }
 
 Timer::Timer()
@@ -17,23 +16,13 @@ Timer::Timer()
   sei();
 }
 
-void Timer::connect( InterruptAbstract *interruptClass )
+void Timer::connect( CallbackAbstract *callback )
 {
-  TimerInterrupt::TO_0.push( interruptClass );
+  TimerInterrupt::TO_0.connect( callback );
 }
 
 
 ISR( TIMER0_OVF_vect )
 {
-  if ( !TimerInterrupt::TO_0.empty() )
-  {
-    ListItem<InterruptAbstract *> * tmp =
-      TimerInterrupt::TO_0.getBegin();
-    do
-    {
-      tmp->data->_interrupt();
-      tmp = tmp->next;
-    }
-    while ( tmp );
-  }
+  TimerInterrupt::TO_0.em();
 }

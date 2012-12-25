@@ -14,19 +14,23 @@ public:
   {
     pins[index].pin = pin;
     pins[index].port = port;
-    parent->mcu->pinMode( pins[index], mode );
+    parent->mcu()->pinMode( pins[index], mode );
   }
 
 protected:
-  void pinUp( size_t index )
+  inline void pinUp( size_t index )
   {
-    parent->mcu->digitalWrite( pins[index], 1 );
+    parent->mcu()->digitalWrite( pins[index], 1 );
   }
-  void pinDown( size_t index )
+  inline void pinDown( size_t index )
   {
-    parent->mcu->digitalWrite( pins[index], 0 );
+    parent->mcu()->digitalWrite( pins[index], 0 );
   }
-  char getRealPin( size_t index )
+  inline bool pinState (size_t index )
+  {
+    return parent->mcu()->digitalRead( pins[index] );
+  }
+  inline char getRealPin( size_t index )
   {
     return pins[index].pin;
   }

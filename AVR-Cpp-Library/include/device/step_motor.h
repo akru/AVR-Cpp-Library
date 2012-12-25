@@ -1,10 +1,10 @@
 #ifndef DRIVE_H
 #define DRIVE_H
 
-#include <interrupt_abstract.h>
 #include <external_device_abstract.h>
 #include <timer_abstract.h>
 #include <application.h>
+#include <callback.h>
 
 const char DIRECTION_LEFT  = 1;
 const char DIRECTION_RIGHT = 0;
@@ -21,8 +21,7 @@ public:
 };
 
 class StepMotor :
-      public ExternalDeviceAbstract,
-      public InterruptAbstract
+      public ExternalDeviceAbstract
 {
 public:
   StepMotor( Application *parentApp );
@@ -41,6 +40,7 @@ private:
   static const char MODE_READY   = 1;
   static const char MODE_IDLE    = 2;
   static const char MODE_SWITCH  = 3;
+  Callback<StepMotor> *c;
 };
 
 #endif // DRIVE_H

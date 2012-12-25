@@ -6,12 +6,13 @@
 #include <device/button.h>
 #include <device/step_motor.h>
 #include <device/sensor_angle.h>
+#include <mcu_abstract.h>
 
 class MainApplication :
       public Application
 {
 public:
-  MainApplication();
+  MainApplication(McuAbstract *mcu);
   void exec();
   void terminate()
   {}

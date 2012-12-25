@@ -2,10 +2,12 @@
 
 Speaker::Speaker( Application *parent )
     : ExternalDeviceAbstract( 1 ),
-    timer( parent->mcu->timer() ), mode( MODE_SLEEP ), state( 0 ), fCounter( 0 ), dCounter( 0 )
+    timer( parent->mcu()->timer() ), mode( MODE_SLEEP ), state( 0 ), fCounter( 0 ), dCounter( 0 )
 {
   this->parent = parent;
-  timer->connect( this );
+
+  c = new Callback<Speaker>(this, &Speaker::_interrupt);
+  timer->connect( c );
 }
 
 void Speaker::run( unsigned int newFreq, unsigned int newDuration )

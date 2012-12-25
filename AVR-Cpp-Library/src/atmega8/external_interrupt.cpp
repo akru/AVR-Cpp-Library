@@ -1,12 +1,12 @@
 #include <atmega8/external_interrupt.h>
 #include <avr/io.h>
-#include <avr/iom8.h>
 #include <avr/interrupt.h>
+#include <signal.h>
 
 namespace ExtInterrupt
 {
-InterruptAbstract * INT_0 = 0;
-InterruptAbstract * INT_1 = 0;
+signal INT_0;
+signal INT_1;
 }
 
 ExternalInterrupt::ExternalInterrupt()
@@ -17,27 +17,25 @@ ExternalInterrupt::ExternalInterrupt()
   sei();
 }
 
-void ExternalInterrupt::connect( InterruptAbstract *interruptClass, char numInterrupt )
+void ExternalInterrupt::connect( CallbackAbstract *callback, char INTn )
 {
-  switch ( numInterrupt )
+  switch ( INTn )
   {
   case 0:
-    ExtInterrupt::INT_0 = interruptClass;
+    ExtInterrupt::INT_0.connect(callback);
     break;
   case 1:
-    ExtInterrupt::INT_1 = interruptClass;
+    ExtInterrupt::INT_1.connect(callback);
     break;
   }
 }
 
 ISR( INT0_vect )
 {
-  if ( ExtInterrupt::INT_0 )
-    ExtInterrupt::INT_0->_interrupt();
+  ExtInterrupt::INT_0.em();
 }
 
 ISR( INT1_vect )
 {
-  if ( ExtInterrupt::INT_1 )
-    ExtInterrupt::INT_1->_interrupt();
+  ExtInterrupt::INT_1.em();
 }

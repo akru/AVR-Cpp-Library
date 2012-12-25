@@ -1,10 +1,9 @@
 #include <atmega8/analog_digital_converter.h>
 #include <avr/io.h>
-#include <avr/iom8.h>
 #include <avr/interrupt.h>
 
 AnalogDigitalConverter::AnalogDigitalConverter()
-    : mode( 1 )
+  : mode( 1 )
 {
   ADCSRA |= ( 1 << ADPS1 ) | ( 1 << ADPS2 );
   ADCSRA |= ( 1 << ADEN );

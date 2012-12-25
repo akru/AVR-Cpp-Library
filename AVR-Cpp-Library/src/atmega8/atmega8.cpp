@@ -1,6 +1,5 @@
 #include <atmega8/atmega8.h>
 #include <avr/io.h>
-#include <avr/iom8.h>
 
 AtMega8::AtMega8()
 {
@@ -59,4 +58,19 @@ void AtMega8::digitalWrite( Pin pin, bool state )
       break;
     }
   }
+}
+
+bool AtMega8::digitalRead( Pin pin )
+{
+  char pinMask = ( 1 << pin.pin );
+  switch ( pin.port )
+  {
+  case PORT_B:
+    return PORTB & pinMask;
+  case PORT_C:
+    return PORTC & pinMask;
+  case PORT_D:
+    return PORTD & pinMask;
+  }
+  return false;
 }

@@ -6,17 +6,17 @@
 class Application
 {
 public:
-  Application( Application *parent = 0 )
-      : parent( parent )
-  {
-    if ( parent )
-      mcu = parent->mcu;
-  }
+  Application( McuAbstract *mcu )
+    : _mcu ( mcu )
+  {}
   virtual void exec() = 0;
   virtual void terminate() = 0;
-  McuAbstract *mcu;
+  McuAbstract *mcu()
+  {
+    return _mcu;
+  }
 private:
-  Application *parent;
+  McuAbstract *_mcu;
 };
 
 #endif // APPLICATION_H

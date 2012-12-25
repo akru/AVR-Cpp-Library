@@ -18,6 +18,7 @@ public:
   virtual AnalogDigitalConverterAbstract * adc() = 0;
   virtual ExternalInterruptAbstract * externalInterrupt() = 0;
   virtual void digitalWrite( Pin pin, bool state ) = 0;
+  virtual bool digitalRead( Pin pin ) = 0;
   virtual void pinMode( Pin pin, bool mode ) = 0;
 };
 

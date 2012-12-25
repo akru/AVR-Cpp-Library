@@ -1,13 +1,13 @@
 #include "music_player.h"
-#include <atmega8/atmega8.h>
+#include <atmega8/io_def.h>
 
-MusicPlayer::MusicPlayer()
+MusicPlayer::MusicPlayer(McuAbstract *mcu)
+  : Application(mcu)
 {
-    mcu = new AtMega8();
-    sp = new Speaker( this );
-    sp2 = new Speaker( this );
-    sp->setPin(0, PC_4, PORT_C, WRITE);
-    sp2->setPin(0, PC_5, PORT_C, WRITE);
+  sp = new Speaker( this );
+  sp2 = new Speaker( this );
+  sp->setPin(0, PC_4, PORT_C, WRITE);
+  sp2->setPin(0, PC_5, PORT_C, WRITE);
 }
 
 void MusicPlayer::exec()

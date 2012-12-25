@@ -4,22 +4,16 @@ Button::Button( Application *parentApp )
     : ExternalDeviceAbstract( 1 )
 {
   parent = parentApp;
-  externalInterrupt = parent->mcu->externalInterrupt();
 }
 
-void Button::onClick( void ( *cback )() )
+void Button::click( CallbackAbstract *callback )
 {
-  callback = cback;
+  cback = callback;
 }
 
-void Button::setINT( char numInt )
+void Button::setINT(char INTn )
 {
   pinUp( 0 );
-  externalInterrupt->connect( this, numInt );
+  parent->mcu()->externalInterrupt()->connect(cback, INTn);
 }
 
-void Button::_interrupt()
-{
-  if ( callback )
-    callback();
-}

@@ -4,8 +4,9 @@ StepMotor::StepMotor( Application *parentApp )
     : ExternalDeviceAbstract( 4 ), crntPin( 0 ), mode( MODE_SLEEP )
 {
   parent = parentApp;
-  timer = parent->mcu->timer();
-  timer->connect( this );
+  timer = parent->mcu()->timer();
+  c = new Callback<StepMotor>(this, &StepMotor::_interrupt);
+  timer->connect( c );
 }
 
 void StepMotor::step( StepInfo sInfo )
